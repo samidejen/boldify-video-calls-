@@ -18,7 +18,7 @@ const LoginPage = () => {
         {/* Logo */}
         <div className="flex items-center gap-2 mb-2">
           <VideoIcon className="size-16 text-green-400" />
-          <h1 className="text-4xl font-bold font-mono text-green-400">ዋሸራ</h1>
+          <h1 className="text-4xl font-bold font-mono text-green-400">🐺 Bold</h1>
         </div>
 
         {/* Welcome Message */}
