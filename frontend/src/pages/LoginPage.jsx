@@ -13,26 +13,24 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-[#0f0d0d] to-[#1f1c1c] px-4">
-      <div className="w-full max-w-md bg-white/5 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-green-800">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#334155] px-4">
+      <div className="w-full max-w-md bg-white/5 backdrop-blur-md p-8 rounded-3xl shadow-lg border border-white/10">
         {/* Logo */}
-        <div className="flex items-center gap-3 mb-6 justify-center">
-          <VideoIcon className="size-14 text-green-400 drop-shadow-md" />
-          <h1 className="text-4xl font-bold font-mono text-green-400 drop-shadow-md">
-            🐺 Bold
-          </h1>
+        <div className="flex items-center justify-center gap-3 mb-6">
+          <VideoIcon className="w-12 h-12 text-emerald-400" />
+          <h1 className="text-4xl font-bold font-mono text-emerald-400">🐺 Bold</h1>
         </div>
 
         {/* Welcome Message */}
-        <p className="text-xl text-pink-500 text-center font-medium italic bg-pink-100 bg-opacity-10 rounded-lg px-4 py-3 mb-4 shadow">
+        <p className="text-lg text-pink-300 text-center font-medium italic bg-white/10 rounded-lg px-4 py-3 mb-5 shadow-sm">
           👋 Goodbye for now, my love — but my heart stays with her 💘
         </p>
 
-        <h2 className="text-2xl font-bold text-white mb-4 text-center">Welcome Back</h2>
+        <h2 className="text-xl font-bold text-white mb-5 text-center">Welcome Back</h2>
 
         {/* Error Message */}
         {error && (
-          <div className="text-sm text-red-400 mb-4 py-2 px-3 bg-red-900/20 rounded-lg shadow-sm">
+          <div className="text-sm text-red-400 mb-4 py-2 px-3 bg-red-800/20 rounded">
             {error?.response?.data?.message || "Login failed"}
           </div>
         )}
@@ -44,7 +42,7 @@ const LoginPage = () => {
             <label className="block text-sm text-gray-300 mb-1">Email</label>
             <input
               type="email"
-              className="w-full rounded-xl px-4 py-2 bg-[#1e1e1e] text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+              className="w-full rounded-lg px-4 py-2 bg-[#1e293b] text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
               placeholder="hello@example.com"
               value={loginData.email}
               onChange={(e) =>
@@ -59,7 +57,7 @@ const LoginPage = () => {
             <label className="block text-sm text-gray-300 mb-1">Password</label>
             <input
               type="password"
-              className="w-full rounded-xl px-4 py-2 bg-[#1e1e1e] text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition"
+              className="w-full rounded-lg px-4 py-2 bg-[#1e293b] text-white placeholder-gray-400 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
               placeholder="••••••••"
               value={loginData.password}
               onChange={(e) =>
@@ -73,11 +71,11 @@ const LoginPage = () => {
           <button
             type="submit"
             disabled={isPending}
-            className="w-full bg-green-500 hover:bg-green-600 text-black py-2 rounded-full font-semibold transition-transform hover:scale-[1.02] active:scale-95 shadow-md"
+            className="w-full bg-emerald-500 hover:bg-emerald-600 text-black py-2 rounded-full font-semibold transition-all duration-200 active:scale-95"
           >
             {isPending ? (
               <>
-                <span className="loading loading-spinner loading-xs mr-2" />
+                <span className="inline-block animate-spin mr-2 border-2 border-t-transparent border-white rounded-full w-4 h-4" />
                 Signing in...
               </>
             ) : (
@@ -86,9 +84,9 @@ const LoginPage = () => {
           </button>
 
           {/* Footer */}
-          <p className="text-center text-sm text-gray-400 mt-5">
+          <p className="text-center text-sm text-gray-400 mt-4">
             Don’t have an account?{" "}
-            <Link to="/signup" className="text-green-400 hover:underline">
+            <Link to="/signup" className="text-emerald-400 hover:underline">
               Create one
             </Link>
           </p>
