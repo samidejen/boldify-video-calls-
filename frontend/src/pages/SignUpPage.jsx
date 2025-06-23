@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { ShipWheelIcon } from "lucide-react";
+import { ShipWheelIcon, VideoIcon } from "lucide-react";
 import { Link } from "react-router";
-
 import useSignUp from "../hooks/useSignUp";
 
 const SignUpPage = () => {
@@ -11,18 +10,6 @@ const SignUpPage = () => {
     password: "",
   });
 
-  // This is how we did it at first, without using our custom hook
-  // const queryClient = useQueryClient();
-  // const {
-  //   mutate: signupMutation,
-  //   isPending,
-  //   error,
-  // } = useMutation({
-  //   mutationFn: signup,
-  //   onSuccess: () => queryClient.invalidateQueries({ queryKey: ["authUser"] }),
-  // });
-
-  // This is how we did it using our custom hook - optimized version
   const { isPending, error, signupMutation } = useSignUp();
 
   const handleSignup = (e) => {
@@ -31,137 +18,117 @@ const SignUpPage = () => {
   };
 
   return (
-    <div
-      className="h-screen flex items-center justify-center p-4 sm:p-6 md:p-8"
-      data-theme="forest"
-    >
-      <div className="border border-primary/25 flex flex-col lg:flex-row w-full max-w-5xl mx-auto bg-base-100 rounded-xl shadow-lg overflow-hidden">
-        {/* SIGNUP FORM - LEFT SIDE */}
-        <div className="w-full lg:w-1/2 p-4 sm:p-8 flex flex-col">
-          {/* LOGO */}
-          <div className="mb-4 flex items-center justify-start gap-2">
-            <ShipWheelIcon className="size-9 text-primary" />
-            <span className="text-3xl font-bold font-mono bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary tracking-wider">
-              Streamify
-            </span>
-          </div>
-
-          {/* ERROR MESSAGE IF ANY */}
-          {error && (
-            <div className="alert alert-error mb-4">
-              <span>{error.response.data.message}</span>
-            </div>
-          )}
-
-          <div className="w-full">
-            <form onSubmit={handleSignup}>
-              <div className="space-y-4">
-                <div>
-                  <h2 className="text-xl font-semibold">Create an Account</h2>
-                  <p className="text-sm opacity-70">
-                    Join Streamify and start your language learning adventure!
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  {/* FULLNAME */}
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text">Full Name</span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="John Doe"
-                      className="input input-bordered w-full"
-                      value={signupData.fullName}
-                      onChange={(e) => setSignupData({ ...signupData, fullName: e.target.value })}
-                      required
-                    />
-                  </div>
-                  {/* EMAIL */}
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text">Email</span>
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="john@gmail.com"
-                      className="input input-bordered w-full"
-                      value={signupData.email}
-                      onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-                  {/* PASSWORD */}
-                  <div className="form-control w-full">
-                    <label className="label">
-                      <span className="label-text">Password</span>
-                    </label>
-                    <input
-                      type="password"
-                      placeholder="********"
-                      className="input input-bordered w-full"
-                      value={signupData.password}
-                      onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
-                      required
-                    />
-                    <p className="text-xs opacity-70 mt-1">
-                      Password must be at least 6 characters long
-                    </p>
-                  </div>
-
-                  <div className="form-control">
-                    <label className="label cursor-pointer justify-start gap-2">
-                      <input type="checkbox" className="checkbox checkbox-sm" required />
-                      <span className="text-xs leading-tight">
-                        I agree to the{" "}
-                        <span className="text-primary hover:underline">terms of service</span> and{" "}
-                        <span className="text-primary hover:underline">privacy policy</span>
-                      </span>
-                    </label>
-                  </div>
-                </div>
-
-                <button className="btn btn-primary w-full" type="submit">
-                  {isPending ? (
-                    <>
-                      <span className="loading loading-spinner loading-xs"></span>
-                      Loading...
-                    </>
-                  ) : (
-                    "Create Account"
-                  )}
-                </button>
-
-                <div className="text-center mt-4">
-                  <p className="text-sm">
-                    Already have an account?{" "}
-                    <Link to="/login" className="text-primary hover:underline">
-                      Sign in
-                    </Link>
-                  </p>
-                </div>
-              </div>
-            </form>
-          </div>
+    <div className="min-h-screen  flex items-center justify-center bg-[#0e0c0c] px-4">
+      <div className="w-full max-w-md  bg-[#131111] p-8 rounded-2xl shadow-md border border-green-900">
+        {/* Logo */}
+        <div className="flex items-center gap-2 mb-2">
+          <VideoIcon className="size-16 text-green-400" />
+          <h1 className="text-4xl font-bold font-mono text-green-400">ዋሸራ</h1>
         </div>
 
-        {/* SIGNUP FORM - RIGHT SIDE */}
-        <div className="hidden lg:flex w-full lg:w-1/2 bg-primary/10 items-center justify-center">
-          <div className="max-w-md p-8">
-            {/* Illustration */}
-            <div className="relative aspect-square max-w-sm mx-auto">
-              <img src="/i.png" alt="Language connection illustration" className="w-full h-full" />
-            </div>
+        <h2 className="text-xl font-semibold text-white mb-4">
+          Create an Account
+        </h2>
 
-            <div className="text-center space-y-3 mt-6">
-              <h2 className="text-xl font-semibold">Connect with language partners worldwide</h2>
-              <p className="opacity-70">
-                Practice conversations, make friends, and improve your language skills together
-              </p>
-            </div>
+        {/* Error Message */}
+        {error && (
+          <div className="text-sm text-red-400 mb-4 py-2 px-3 bg-red-900 bg-opacity-20 rounded">
+            {error?.response?.data?.message || "Signup failed"}
           </div>
-        </div>
+        )}
+
+        {/* Signup Form */}
+        <form onSubmit={handleSignup} className="space-y-3">
+          {/* Full Name */}
+          <div>
+            <label
+              className="block text-sm text-gray-300 mb-1"
+              htmlFor="fullName"
+            >
+              Full Name
+            </label>
+            <input
+              id="fullName"
+              type="text"
+              placeholder="John Doe"
+              className="input w-full rounded-full px-4 py-2 bg-[#1a1a1a] text-white placeholder-gray-500 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              value={signupData.fullName}
+              onChange={(e) =>
+                setSignupData({ ...signupData, fullName: e.target.value })
+              }
+              required
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm text-gray-300 mb-1" htmlFor="email">
+              Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              placeholder="john@example.com"
+              className="input w-full rounded-full px-4 py-2 bg-[#1a1a1a] text-white placeholder-gray-500 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              value={signupData.email}
+              onChange={(e) =>
+                setSignupData({ ...signupData, email: e.target.value })
+              }
+              required
+            />
+          </div>
+
+          {/* Password */}
+          <div>
+            <label
+              className="block text-sm text-gray-300 mb-1"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              placeholder="••••••••"
+              className="input w-full rounded-full px-4 py-2 bg-[#1a1a1a] text-white placeholder-gray-500 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+              value={signupData.password}
+              onChange={(e) =>
+                setSignupData({ ...signupData, password: e.target.value })
+              }
+              required
+              minLength={6}
+            />
+            <p className="text-xs text-gray-400 mt-1">
+              Password must be at least 6 characters long
+            </p>
+          </div>
+
+          {/* Terms and Conditions */}
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={isPending}
+            className="w-full bg-green-500 text-black py-2 rounded-full font-semibold hover:bg-green-600 transition"
+          >
+            {isPending ? (
+              <>
+                <span className="loading loading-spinner loading-xs mr-2" />
+                Creating account...
+              </>
+            ) : (
+              "Create Account"
+            )}
+          </button>
+
+          {/* Footer */}
+          <p className="text-center text-xs text-gray-400 mt-4">
+            Already have an account?{" "}
+            <Link to="/login" className="text-green-400 hover:underline">
+              Sign in
+            </Link>
+          </p>
+        </form>
       </div>
     </div>
   );
