@@ -23,7 +23,7 @@ const LoginPage = () => {
 
         {/* Welcome Message */}
        <p className="text-2xl text-pink-600 text-center font-semibold italic bg-pink-100 rounded-xl px-6 py-4 shadow-md">
-  👋 Goodbye for now, my love — but my heart stays with her 💘
+  👋 Goodbye for now, my love — but my heart stays with her MD5💘
 </p>
 
         <h2 className="text-xl font-semibold text-white mb-1">Welcome Back</h2>
